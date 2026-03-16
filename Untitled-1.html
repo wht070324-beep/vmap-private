@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>vmap</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<h1>vmap</h1>
+<p>this is a private online map</p>
+<div id="map" style="height: 80vh; width: 100%; border: 2px solid cyan;"></div>
+
+  <!-- Now import the map from leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5n/N0aV0=" 
+        crossorigin=""/>
+
+  <!-- Leaflet JS，从官方 CDN 加载 -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+          crossorigin=""></script>
+
+<script>
+    var map = L.map('map').setView([22.543, 114.058], 11);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    L.marker([22.543, 114.058])
+      .addTo(map)
+      .bindPopup('这里是测试点<br>未来可以写备注！')
+      .openPopup();
+  </script>         
+</body>
+
+</html>
